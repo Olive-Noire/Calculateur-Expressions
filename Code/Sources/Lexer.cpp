@@ -23,15 +23,25 @@ bool ExpressionSyntax(const std::string &expression) {
 
     }
 
-    if (noSpace.empty()) {
+    if (noSpace.empty() || !std::isdigit(noSpace[0])) {
         
         return false;
 
     } else {
 
-        for (char c : noSpace) {
+        for (std::size_t i{0}; i < noSpace.size(); i++) {
 
-            if (!std::isdigit(c) && c != '+') return false;
+            if (!std::isdigit(noSpace[i])) {
+
+                if (noSpace[i] == '+') {
+
+                    // if dound "++" in string
+                    if (i > 0 && noSpace[i-1] == '+') return false;
+                    if (i < noSpace.size()-1 && noSpace[i+1] == '+') return false;
+
+                }
+
+            }
 
         }
 

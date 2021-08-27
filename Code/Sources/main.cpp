@@ -1,10 +1,10 @@
 #include <iostream>
 
-#include "../Headers/Lexer.hpp"
+#include "../Headers/Parser.hpp"
 
 int main() {
 
-    std::cout << std::boolalpha << ExpressionSyntax("+");
+    std::cout << std::boolalpha << Calculate(GetTokensFromExpression("13+4+8 + 9"));
     std::cin.get();
 
     return 0;
