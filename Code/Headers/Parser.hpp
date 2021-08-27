@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-enum class Operator {ADD = 0, SUB};
+enum class Operator {ADD = 0, SUB, MUL, DIV, MOD, EXP};
 
 struct Tokens {
 
@@ -18,6 +18,6 @@ struct Tokens {
 Operator ToOperator(char);
 
 Tokens GetTokensFromExpression(std::string);
-int Calculate(const Tokens&);
+int Calculate(Tokens);
 
 #endif // DEF_PARSER_HPP

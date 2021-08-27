@@ -17,7 +17,7 @@ std::string RemoveSpaces(const std::string &s) {
 
 bool IsOperator(char c) {
 
-    return c == '+' || c == '-';
+    return c == '+' || c == '-' || c == '*' || c == '/' || c == '%' || c == '^';
 
 }
 

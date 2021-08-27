@@ -2,18 +2,30 @@
 #include <limits>
 
 #include "../Headers/Parser.hpp"
+#include "../Headers/Lexer.hpp"
 
 int main() {
 
-    std::cout << "Entrez expression : ";
-
     std::string input;
-    std::getline(std::cin, input);
 
-    std::cout << Calculate(GetTokensFromExpression(input));
+    while (RemoveSpaces(input) != "quit") {
 
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    std::cin.get();
+        std::cout << "> ";
+        std::getline(std::cin, input);
+
+        try {
+
+            std::cout << Calculate(GetTokensFromExpression(input));
+
+        } catch (const std::exception &e) {
+
+            std::cout << e.what();
+
+        }
+
+        std::cout << std::endl;
+
+    }
 
     return 0;
 
