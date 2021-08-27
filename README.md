@@ -1,3 +1,11 @@
 # Résolveur d'expressions mathématiques
 
-Peut résoudre des expressions mathématiques avec des additions et soustractions d'entiers naturels seulement.
+Opérateurs prient en compte :
+- Addition '+'
+- Soustraction '-'
+- Multiplication '*'
+- Division '/'
+- Modulo '%'
+- Exposant '^'
+
+Ne prend que des nombres entier naturel mais renvoi un entier relatif
