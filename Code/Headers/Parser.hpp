@@ -4,9 +4,20 @@
 #include <string>
 #include <vector>
 
-using Tokens = std::vector<unsigned int>;
+enum class Operator {ADD = 0, SUB};
 
-Tokens GetTokensFromExpression(const std::string&);
-unsigned int Calculate(const Tokens&);
+struct Tokens {
+
+    public:
+
+    std::vector<unsigned int> numbers;
+    std::vector<Operator> operators;
+
+};
+
+Operator ToOperator(char);
+
+Tokens GetTokensFromExpression(std::string);
+int Calculate(const Tokens&);
 
 #endif // DEF_PARSER_HPP

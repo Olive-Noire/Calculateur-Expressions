@@ -2,6 +2,25 @@
 
 #include <cctype>
 
+std::string RemoveSpaces(const std::string &s) {
+
+    std::string noSpaces;
+    for (char c : s) {
+
+        if (!std::isspace(c)) noSpaces.push_back(c);
+
+    }
+
+    return noSpaces;
+
+}
+
+bool IsOperator(char c) {
+
+    return c == '+' || c == '-';
+
+}
+
 bool IsNumber(const std::string &s) {
 
     for (char c : s) {
@@ -14,30 +33,25 @@ bool IsNumber(const std::string &s) {
 
 }
 
-bool ExpressionSyntax(const std::string &expression) {
+bool ExpressionSyntax(std::string expression) {
 
-    std::string noSpace;
-    for (char c : expression) {
+    expression = RemoveSpaces(expression);
 
-        if (!std::isspace(c)) noSpace.push_back(c);
-
-    }
-
-    if (noSpace.empty() || !std::isdigit(noSpace[0])) {
+    if (expression.empty() || !std::isdigit(expression[0]) || !std::isdigit(expression.back())) {
         
         return false;
 
     } else {
 
-        for (std::size_t i{0}; i < noSpace.size(); i++) {
+        for (std::size_t i{0}; i < expression.size(); i++) {
 
-            if (!std::isdigit(noSpace[i])) {
+            if (!std::isdigit(expression[i])) {
 
-                if (noSpace[i] == '+') {
+                if (IsOperator(expression[i])) {
 
                     // if dound "++" in string
-                    if (i > 0 && noSpace[i-1] == '+') return false;
-                    if (i < noSpace.size()-1 && noSpace[i+1] == '+') return false;
+                    if (i > 0 && IsOperator(expression[i+1])) return false;
+                    if (i < expression.size()-1 && IsOperator(expression[i-1])) return false;
 
                 }
 
